@@ -1,0 +1,243 @@
+blueprint:
+  name: Shelly BLU RC Button 4 (Zigbee2MQTT Auto Device)
+  description: >
+    Zigbee2MQTT blueprint for Shelly BLU RC Button 4.
+    Select the device directly — no MQTT topic required.
+    Supports action formats:
+      - button_1_single
+      - 1_single
+
+  domain: automation
+
+  input:
+    remote_device:
+      name: Shelly BLU RC Button 4
+      description: Select your Zigbee2MQTT device
+      selector:
+        device:
+          integration: mqtt
+
+    # Button 1
+    b1_single:
+      name: Button 1 – Single press
+      default: []
+      selector: { action: {} }
+    b1_double:
+      name: Button 1 – Double press
+      default: []
+      selector: { action: {} }
+    b1_triple:
+      name: Button 1 – Triple press
+      default: []
+      selector: { action: {} }
+    b1_hold:
+      name: Button 1 – Hold
+      default: []
+      selector: { action: {} }
+
+    # Button 2
+    b2_single:
+      name: Button 2 – Single press
+      default: []
+      selector: { action: {} }
+    b2_double:
+      name: Button 2 – Double press
+      default: []
+      selector: { action: {} }
+    b2_triple:
+      name: Button 2 – Triple press
+      default: []
+      selector: { action: {} }
+    b2_hold:
+      name: Button 2 – Hold
+      default: []
+      selector: { action: {} }
+
+    # Button 3
+    b3_single:
+      name: Button 3 – Single press
+      default: []
+      selector: { action: {} }
+    b3_double:
+      name: Button 3 – Double press
+      default: []
+      selector: { action: {} }
+    b3_triple:
+      name: Button 3 – Triple press
+      default: []
+      selector: { action: {} }
+    b3_hold:
+      name: Button 3 – Hold
+      default: []
+      selector: { action: {} }
+
+    # Button 4
+    b4_single:
+      name: Button 4 – Single press
+      default: []
+      selector: { action: {} }
+    b4_double:
+      name: Button 4 – Double press
+      default: []
+      selector: { action: {} }
+    b4_triple:
+      name: Button 4 – Triple press
+      default: []
+      selector: { action: {} }
+    b4_hold:
+      name: Button 4 – Hold
+      default: []
+      selector: { action: {} }
+
+mode: single
+
+trigger:
+  - platform: device
+    domain: mqtt
+    device_id: !input remote_device
+    type: action
+    subtype: button_1_single
+    id: b1_single
+
+  - platform: device
+    domain: mqtt
+    device_id: !input remote_device
+    type: action
+    subtype: button_1_double
+    id: b1_double
+
+  - platform: device
+    domain: mqtt
+    device_id: !input remote_device
+    type: action
+    subtype: button_1_triple
+    id: b1_triple
+
+  - platform: device
+    domain: mqtt
+    device_id: !input remote_device
+    type: action
+    subtype: button_1_hold
+    id: b1_hold
+
+  - platform: device
+    domain: mqtt
+    device_id: !input remote_device
+    type: action
+    subtype: button_2_single
+    id: b2_single
+
+  - platform: device
+    domain: mqtt
+    device_id: !input remote_device
+    type: action
+    subtype: button_2_double
+    id: b2_double
+
+  - platform: device
+    domain: mqtt
+    device_id: !input remote_device
+    type: action
+    subtype: button_2_triple
+    id: b2_triple
+
+  - platform: device
+    domain: mqtt
+    device_id: !input remote_device
+    type: action
+    subtype: button_2_hold
+    id: b2_hold
+
+  - platform: device
+    domain: mqtt
+    device_id: !input remote_device
+    type: action
+    subtype: button_3_single
+    id: b3_single
+
+  - platform: device
+    domain: mqtt
+    device_id: !input remote_device
+    type: action
+    subtype: button_3_double
+    id: b3_double
+
+  - platform: device
+    domain: mqtt
+    device_id: !input remote_device
+    type: action
+    subtype: button_3_triple
+    id: b3_triple
+
+  - platform: device
+    domain: mqtt
+    device_id: !input remote_device
+    type: action
+    subtype: button_3_hold
+    id: b3_hold
+
+  - platform: device
+    domain: mqtt
+    device_id: !input remote_device
+    type: action
+    subtype: button_4_single
+    id: b4_single
+
+  - platform: device
+    domain: mqtt
+    device_id: !input remote_device
+    type: action
+    subtype: button_4_double
+    id: b4_double
+
+  - platform: device
+    domain: mqtt
+    device_id: !input remote_device
+    type: action
+    subtype: button_4_triple
+    id: b4_triple
+
+  - platform: device
+    domain: mqtt
+    device_id: !input remote_device
+    type: action
+    subtype: button_4_hold
+    id: b4_hold
+
+action:
+  - choose:
+      - conditions: "{{ trigger.id == 'b1_single' }}"
+        sequence: !input b1_single
+      - conditions: "{{ trigger.id == 'b1_double' }}"
+        sequence: !input b1_double
+      - conditions: "{{ trigger.id == 'b1_triple' }}"
+        sequence: !input b1_triple
+      - conditions: "{{ trigger.id == 'b1_hold' }}"
+        sequence: !input b1_hold
+
+      - conditions: "{{ trigger.id == 'b2_single' }}"
+        sequence: !input b2_single
+      - conditions: "{{ trigger.id == 'b2_double' }}"
+        sequence: !input b2_double
+      - conditions: "{{ trigger.id == 'b2_triple' }}"
+        sequence: !input b2_triple
+      - conditions: "{{ trigger.id == 'b2_hold' }}"
+        sequence: !input b2_hold
+
+      - conditions: "{{ trigger.id == 'b3_single' }}"
+        sequence: !input b3_single
+      - conditions: "{{ trigger.id == 'b3_double' }}"
+        sequence: !input b3_double
+      - conditions: "{{ trigger.id == 'b3_triple' }}"
+        sequence: !input b3_triple
+      - conditions: "{{ trigger.id == 'b3_hold' }}"
+        sequence: !input b3_hold
+
+      - conditions: "{{ trigger.id == 'b4_single' }}"
+        sequence: !input b4_single
+      - conditions: "{{ trigger.id == 'b4_double' }}"
+        sequence: !input b4_double
+      - conditions: "{{ trigger.id == 'b4_triple' }}"
+        sequence: !input b4_triple
+      - conditions: "{{ trigger.id == 'b4_hold' }}"
+        sequence: !input b4_hold
